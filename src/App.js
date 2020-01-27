@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
-function Example() {
+function ExternalComponentFromAPI() {
   const testFunc = event => {
     console.log("=== event fire ===");
   };
@@ -43,7 +43,7 @@ function App() {
       </button>
       {show && (
         <div>
-          <Example />
+          <ExternalComponentFromAPI />
         </div>
       )}
     </div>
