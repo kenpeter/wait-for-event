@@ -19,24 +19,25 @@ function ExternalComponentFromAPI() {
 function App() {
   const [show, setShow] = useState(false);
 
+  useEffect(() => {
+    if (show) {
+      window.dispatchEvent(
+        new CustomEvent("TEST_EVENT", {
+          bubbles: true,
+          composed: true,
+          detail: {
+            text: "data"
+          }
+        })
+      );
+    }
+  }, [show]);
+
   return (
     <div className="App">
       <button
         onClick={() => {
           setShow(!show);
-
-          // QUESTION: is it a way not to use setTimeout
-          setTimeout(function() {
-            window.dispatchEvent(
-              new CustomEvent("TEST_EVENT", {
-                bubbles: true,
-                composed: true,
-                detail: {
-                  text: "data"
-                }
-              })
-            );
-          }, 2000);
         }}
       >
         Show me
